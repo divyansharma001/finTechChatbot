@@ -1,6 +1,7 @@
 import Groq from "groq-sdk";
 import dotenv from "dotenv";
 import path from "path";
+
 const __dirname = path.resolve();
 dotenv.config({
   path: "./.env",
@@ -27,6 +28,11 @@ export default async function chatController(req, res) {
       ? conversationHistory
       : [];
 
+      const codeForAi = typeof userInput === "string"
+      ? JSON.stringify(userInput).slice(1, -1)
+      : JSON.stringify(userInput);
+    
+
     const messages = [
       {
         role: "system",
@@ -36,7 +42,7 @@ export default async function chatController(req, res) {
       ...history,
       {
         role: "user",
-        content: userInput,
+        content: codeForAi,
       },
     ];
 
