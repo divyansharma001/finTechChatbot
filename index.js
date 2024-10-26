@@ -9,7 +9,7 @@ app.use(express.json());
 
 
 const corsOptions = {
-    origin: 'https://leet-aid-fe.vercel.app',
+    origin: '*',
     credentials: true,
 };
 
