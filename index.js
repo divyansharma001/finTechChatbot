@@ -9,7 +9,7 @@ app.use(express.json());
 
 
 const corsOptions = {
-    origin: 'https://leet-aid-fe.vercel.app',
+    origin: '*',
     credentials: true,
 };
 
@@ -19,7 +19,7 @@ app.use("/api/v1", chatRoute);
 
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Backend is running!');
 });
 
 app.listen(port, () => {
